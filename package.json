@@ -1,0 +1,23 @@
+{
+  "name": "folder-rename",
+  "version": "1.0.0",
+  "description": "renames files in folders into specific format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/photo-art-melanie-frei/folder-rename.git"
+  },
+  "bin": {
+    "folder-rename": "./bin/start.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-v2",
+  "bugs": {
+    "url": "https://github.com/photo-art-melanie-frei/folder-rename/issues"
+  },
+  "homepage": "https://github.com/photo-art-melanie-frei/folder-rename#readme"
+}
