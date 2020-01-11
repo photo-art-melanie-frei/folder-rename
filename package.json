@@ -14,8 +14,9 @@
     "folder-rename": "./bin/start.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "Apache-v2",
+  "author": "Melanie",
+  "license": "Apache-2.0",
+  "private": true,
   "bugs": {
     "url": "https://github.com/photo-art-melanie-frei/folder-rename/issues"
   },
