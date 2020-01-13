@@ -21,10 +21,27 @@ const start = async function() {
             new: path.join(currdir, `${cnt++}`.padStart(3, "0")+".mp3")
         };
     });
+    let failed = false;
     const renames = result.map((res) => {
-        return rename(res.old, res.new);
+        if (res.old === res.new) {
+            return Promise.resolve();
+        }
+        return rename(res.old, res.new).catch(()=> {
+            failed = true;
+            return rename(res.old, "0"+res.new);
+        });
     });
     await Promise.all(renames);
+
+    if(failed) {
+        let renames = result.map((res) => {
+            if (res.old === res.new) {
+                return Promise.resolve();
+            }
+            return rename(res.old, res.new);
+        });
+        await Promise.all(renames);
+    }
 
     console.log(JSON.stringify(result, null, 3));
 
