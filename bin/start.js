@@ -9,7 +9,7 @@ const readfolder = promisify(fs.readdir);
 const rename = promisify(fs.rename);
 
 
-const start = async function() {
+const start = async function(prefix="") {
     const currdir = process.cwd();
     console.log(currdir);
     const files = await readfolder(path.resolve(currdir));
@@ -18,7 +18,7 @@ const start = async function() {
     const result = files.map((file) => {
         return {
             old: path.join(currdir, file),
-            new: path.join(currdir, `${cnt++}`.padStart(3, "0")+".mp3")
+            new: path.join(currdir, `${prefix}${cnt++}`.padStart(3, "0")+".mp3")
         };
     });
     let failed = false;
@@ -51,8 +51,10 @@ const start = async function() {
 
 };
 
-start().then(()=> {
-    console.log("success");
-}, (e) => {
+start("bak__").then(()=> {
+    return start().then(()=> {
+        console.log("success");
+    })
+}).catch(e => {
     console.log(`failure ${e}`);
 })
